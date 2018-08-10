@@ -36,7 +36,7 @@ const initialValue = Value.fromJSON({
     },
 });
 
-class Hello extends Component{
+class DocumentEditor extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -158,4 +158,4 @@ class Hello extends Component{
     }
 }
 
-export default Hello;
+export default DocumentEditor;
