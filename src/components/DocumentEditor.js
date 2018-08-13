@@ -11,8 +11,15 @@ import { italic } from 'react-icons-kit/feather/italic';
 import { code } from 'react-icons-kit/feather/code';
 import { list } from 'react-icons-kit/feather/list';
 import { underline } from 'react-icons-kit/feather/underline';
+import { header } from 'react-icons-kit/fa/header';
+import {strikethrough} from 'react-icons-kit/fa/strikethrough';
+
+
 import { UnderlineMark } from './UnderlineMark';
 import { CodeMark } from './CodeMark';
+import HeaderMark from './HeaderMark';
+import StrikeMark from './StrikeMark';
+
 
 const initialValue = Value.fromJSON({
     document:{
@@ -73,6 +80,12 @@ class DocumentEditor extends Component{
              change.toggleMark('underline');
              return true;
          }
+         case 'h': {
+             change.toggleMark('header');
+         }
+         case 's' :{
+             change.toggleMark('strike');
+         }
 
          default: {
              return;
@@ -93,6 +106,11 @@ class DocumentEditor extends Component{
            return <CodeMark {...props}/>
            case 'underline':
            return <UnderlineMark {...props}/>
+           case 'header':
+           return <HeaderMark {...props}/>
+           case 'strike':
+           return <StrikeMark {...props}/>
+
        }
       
    }
@@ -141,6 +159,20 @@ class DocumentEditor extends Component{
                 onPointerDown  = {(e) => this.onMarkClick(e,'underline')}
                 >
                 <Icon icon={underline}/>
+                </button>
+
+                     <button 
+                className="tooltip-icon-button"
+                onPointerDown  = {(e) => this.onMarkClick(e,'header')}
+                >
+                <Icon icon={header}/>
+                </button>
+
+                  <button 
+                className="tooltip-icon-button"
+                onPointerDown  = {(e) => this.onMarkClick(e,'strike')}
+                >
+                <Icon icon={strikethrough}/>
                 </button>
 
 
