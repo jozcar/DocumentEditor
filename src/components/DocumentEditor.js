@@ -15,8 +15,8 @@ import { header } from 'react-icons-kit/fa/header';
 import {strikethrough} from 'react-icons-kit/fa/strikethrough';
 
 
-import { UnderlineMark } from './UnderlineMark';
-import { CodeMark } from './CodeMark';
+import UnderlineMark  from './UnderlineMark';
+import CodeMark  from './CodeMark';
 import HeaderMark from './HeaderMark';
 import StrikeMark from './StrikeMark';
 
@@ -59,6 +59,14 @@ class DocumentEditor extends Component{
         this.setState({ value: e.value})
     }
     onKeyDown(e,change){
+
+        if (!e.ctrlKey) {
+			return;
+		}
+
+        e.preventDefault();
+        
+        console.log("onKeyDown",e.key);
         switch(e.key){
          case 'b': {
              change.toggleMark('bold')
@@ -68,24 +76,7 @@ class DocumentEditor extends Component{
              change.toggleMark('italic')
              return true;
          }
-         case 'c': {
-             change.toggleMark('code');
-             return true;
-         }
-         case 'l':{
-             change.toggleMark('list');
-             return true;
-         }
-         case 'u':{
-             change.toggleMark('underline');
-             return true;
-         }
-         case 'h': {
-             change.toggleMark('header');
-         }
-         case 's' :{
-             change.toggleMark('strike');
-         }
+       
 
          default: {
              return;
@@ -117,9 +108,10 @@ class DocumentEditor extends Component{
    onMarkClick(e,type){
        e.preventDefault();
        const { value } = this.state;
+       console.log(type);
        const change = value.change().toggleMark(type);
        this.onChange(change);
-       console.log(type);
+     
    }
 
     render(){
