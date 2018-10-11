@@ -6,11 +6,11 @@ import BoldMark from './BoldMark';
 import ItalicMark from './ItalicMark';
 import ListMark from './ListMark';
 import Icon from 'react-icons-kit';
-import { bold } from 'react-icons-kit/feather/bold';
-import { italic } from 'react-icons-kit/feather/italic';
-import { code } from 'react-icons-kit/feather/code';
-import { list } from 'react-icons-kit/feather/list';
-import { underline } from 'react-icons-kit/feather/underline';
+import { bold } from 'react-icons-kit/fa/bold';
+import { italic } from 'react-icons-kit/fa/italic';
+import { code } from 'react-icons-kit/fa/code';
+import { list } from 'react-icons-kit/fa/list';
+import { underline } from 'react-icons-kit/fa/underline';
 import { header } from 'react-icons-kit/fa/header';
 import {strikethrough} from 'react-icons-kit/fa/strikethrough';
 
@@ -169,13 +169,18 @@ class DocumentEditor extends Component{
 
 
                 </FormatToolbar>
-               <Editor
+                <div className="editable--root">
+                <div className="scroll_container--root"> 
+                <Editor
                placeholder="Enter some plain text.. hECTOR."
                value={this.state.value}
                onChange={this.onChange}
                onKeyDown={this.onKeyDown}
                renderMark={this.renderMark}
                />
+                </div>
+                </div>
+             
 
             </div>
         )

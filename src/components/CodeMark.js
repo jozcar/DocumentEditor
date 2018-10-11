@@ -1,6 +1,11 @@
 import React from 'react'
+import './sectionlock.css'
 
-const CodeMark = props => (
-    <code {...props.attributes}>{props.children}</code>
-)
+const CodeMark = props => {
+    console.log(props.children);
+    return(
+    <code  {...props.attributes}>{props.children}</code>
+    )
+}
+
 export default CodeMark;
